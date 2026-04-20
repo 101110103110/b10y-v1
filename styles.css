@@ -1,0 +1,1229 @@
+/* Section 1 */
+
+:root {
+  --bg-dark: #140f49;
+  --text-white: #ffffff;
+  --accent-orange: #ff7a00;
+  --accent-blue: #4da9ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  line-height: 1.6;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Keeps the decor from causing scrollbars */
+  background-color: var(--bg-dark);
+  padding-bottom: 100px; /* Space for the white bar */
+}
+
+/* --- Decorative Corner Lines --- */
+.decor-line {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border: 12px solid #b829cc; /* Purple color from the image */
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Bottom Left Corner Chevron */
+.decor-left {
+  bottom: 5%;
+  left: -150px;
+  transform: rotate(45deg);
+  border-bottom: none;
+  border-left: none;
+  border-radius: 30px; /* Softens the point of the chevron */
+}
+
+/* Mid Right Corner Chevron */
+.decor-right {
+  top: 40%;
+  right: -250px;
+  transform: translateY(-50%) rotate(225deg);
+  width: 350px;
+  height: 350px;
+  border-bottom: none;
+  border-left: none;
+  border-radius: 30px;
+}
+
+/* Base styling for both logos */
+.logo-box {
+  position: absolute;
+  top: 40px; /* Distance from the top */
+}
+
+/* Specific corner placement */
+.logo-left {
+  left: 40px;
+}
+
+.logo-right {
+  right: 40px;
+}
+
+.logo {
+  max-width: 140px; /* Adjusted slightly for corner fit */
+  height: auto;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.highlight-orange {
+  color: var(--accent-orange);
+}
+.highlight-blue {
+  color: var(--accent-blue);
+}
+
+.event-date {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.btn-registration {
+  display: inline-block;
+  background-color: var(--accent-orange);
+  color: white;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 400;
+  transition: transform 0.2s;
+  margin-bottom: 50px;
+  font-size: 1.1rem;
+}
+
+.btn-registration:hover {
+  transform: scale(1.05);
+}
+
+/* --- SECTION 1: UPDATED COUNTDOWN CARD --- */
+
+.countdown-card {
+  position: relative;
+  display: inline-block;
+  padding: 50px 60px 20px 60px;
+  /* Use mask-image for the desktop "bite" - cleaner than background-image */
+  background-color: #ffffff;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 240' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L575,0 a 25,25 0 0 1 25,25 L600,215 a 25,25 0 0 1 -25,25 L285,240 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,190 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 240' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L575,0 a 25,25 0 0 1 25,25 L600,215 a 25,25 0 0 1 -25,25 L285,240 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,190 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  min-width: 720px;
+  z-index: 3;
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #666;
+  margin-top: 15px;
+  display: block;
+}
+
+/* Center the inner wrapper inside the large white card */
+.countdown-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.countdown-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 25px;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 15px; /* Pushes text into the deeper part of the notch */
+}
+
+.countdown-footer {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #444;
+  text-align: right;
+  white-space: nowrap;
+  /* No padding-right ensures it hits the vertical alignment of 'Seconds' */
+  padding-right: 0;
+}
+
+.number {
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #0f0a3d;
+  display: block;
+  margin: 0;
+
+  /* CRITICAL: This keeps numbers from moving */
+  font-variant-numeric: tabular-nums;
+  -moz-font-feature-settings: "tnum";
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum";
+
+  /* Optional: Ensure a consistent minimum width for each number block */
+  min-width: 1.2em;
+  text-align: center;
+}
+
+.time-unit {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  /* This ensures the entire unit (number + label) stays centered in its slot */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Maintain the "Until the start" alignment we perfected */
+.inner-width-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  min-width: 600px; /* Keep this wide enough so digits don't crowd */
+  margin: 0 auto;
+}
+
+.white-footer-block {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust height to match your visual */
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 150px;
+    padding-bottom: 200px;
+  }
+
+  /* 1. Logos */
+  .logo-box {
+    position: absolute;
+    top: 20px;
+  }
+  .logo-left {
+    left: 15px;
+  }
+  .logo-right {
+    right: 15px;
+  }
+  .logo {
+    max-width: 90px;
+  }
+
+  /* 2. Text Spacing Improvements */
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px; /* Space after Title */
+  }
+
+  .event-date {
+    font-size: 1.3rem;
+    margin-bottom: 45px; /* EXTRA SPACE between Date and Button */
+  }
+
+  .btn-registration {
+    margin-bottom: 70px; /* EXTRA SPACE between Button and Countdown Card */
+    padding: 14px 40px;
+  }
+
+  /* 3. The Countdown Card Mask */
+  .countdown-card {
+    min-width: unset;
+    width: 92%;
+    max-width: 420px;
+    padding: 40px 20px 65px 20px;
+    background-color: #ffffff;
+
+    /* Corrected Vertical SVG Mask - identical cutout to desktop */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L375,0 a 25,25 0 0 1 25,25 L400,575 a 25,25 0 0 1 -25,25 L210,600 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,550 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L375,0 a 25,25 0 0 1 25,25 L400,575 a 25,25 0 0 1 -25,25 L210,600 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,550 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+
+    background-image: none;
+  }
+
+  /* 4. Grid Alignment */
+  .inner-width-wrapper {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .countdown-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2x2 Grid for readable numbers */
+    gap: 25px;
+    padding-bottom: 35px;
+  }
+
+  .number {
+    font-size: 3.2rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  .footer-wrapper {
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .countdown-footer {
+    text-align: center;
+    white-space: normal;
+    font-size: 0.8rem;
+    padding-right: 0;
+    line-height: 1.4;
+  }
+}
+
+/* --- DESKTOP: Hide the forced line breaks --- */
+.mobile-break {
+  display: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* --- MOBILE VIEW (768px and below) --- */
+@media (max-width: 768px) {
+  /* Show the line breaks to match the image exactly */
+  .mobile-break {
+    display: block;
+    content: "";
+    margin-top: 5px; /* Optional: adds a tiny bit of breathing room between lines */
+  }
+
+  h1 {
+    font-size: 1.8rem; /* Smaller size to ensure the 4-line stack fits */
+    line-height: 1.2; /* Tighter line height to match the compact look in the image */
+
+    padding: 0 15px;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .event-date {
+    font-size: 1.4rem;
+    margin-top: 25px; /* Matches the spacing in your reference image */
+  }
+}
+
+@media (max-width: 768px) {
+  .decor-line {
+    border-width: 10px;
+  }
+  /* 1. Move the right decor further off-screen */
+  .decor-right {
+    display: block; /* Ensure it's visible if it was hidden previously */
+    top: 50%; /* Adjust vertical height if needed */
+    right: -280px; /* Increased from -250px to push it away from text */
+    width: 300px;
+    height: 300px;
+  }
+
+  /* 2. Move the left decor if needed */
+  .decor-left {
+    left: -180px; /* Pushes the bottom-left one further out too */
+    bottom: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .countdown-card {
+    min-width: unset;
+    width: 95%;
+    max-width: 450px;
+    /* Extra bottom padding to ensure text stays above the 'step' */
+    padding: 35px 15px 70px 15px;
+    background-color: #ffffff;
+    border-radius: 0; /* Let the mask handle the shape */
+
+    /* THE EXACT PATH: This is the same geometry as desktop */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 240' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L575,0 a 25,25 0 0 1 25,25 L600,215 a 25,25 0 0 1 -25,25 L285,240 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,190 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 240' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L575,0 a 25,25 0 0 1 25,25 L600,215 a 25,25 0 0 1 -25,25 L285,240 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,190 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25' fill='black'/%3E%3C/svg%3E");
+
+    /* Force the mask to fit the container without distortion */
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    background-image: none;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+  }
+
+  /* Keep numbers on a single line */
+  .countdown-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2px;
+    padding-bottom: 10px;
+  }
+
+  .number {
+    font-size: 2.1rem; /* Fits 4 units on one line */
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #0f0a3d;
+  }
+
+  .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  /* Alignment for the footer inside the shelf */
+  .footer-wrapper {
+    margin-top: 10px;
+    padding-right: 10px;
+    justify-content: flex-end; /* Align text to the right 'bite' area */
+  }
+
+  .countdown-footer {
+    font-size: 0.65rem;
+    text-align: right;
+    max-width: 180px; /* Constrain so it stays within the notch */
+    margin-left: auto;
+  }
+}
+@media (max-width: 768px) {
+  .countdown-card {
+    position: relative;
+    padding-bottom: 65px; /* Ensures the card is tall enough to show the notch */
+    min-height: 190px;
+  }
+
+  .footer-wrapper {
+    position: absolute;
+    /* Pinned to the bottom right of the card's coordinate system */
+    bottom: 15px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    z-index: 10;
+  }
+
+  .countdown-footer {
+    /* 1. Divide into 2 lines */
+    white-space: normal;
+    max-width: 150px; /* Forces the wrap into 2 lines */
+
+    /* 2. Style & Alignment */
+    font-size: 0.7rem;
+    line-height: 1.1;
+    text-align: right;
+    color: #666;
+    font-weight: 600;
+
+    /* 3. Raise the text */
+    /* We use a smaller transform (or 0) to keep it from falling out of the mask */
+    transform: translateY(0);
+    margin-bottom: 0;
+  }
+}
+
+/* --- High Resolution Screens (1080p and above) --- */
+@media (min-width: 1080px) {
+  .logo-row-container {
+    top: 50px; /* Slightly more breathing room from the top */
+    padding: 0 60px; /* Push logos further toward the screen edges */
+  }
+
+  .logo {
+    max-width: 200px; /* Increased size from 140px */
+    transition: max-width 0.3s ease; /* Smooth transition when resizing window */
+  }
+
+  /* If the IFSO logo looks too big compared to BARIAlink, 
+     you can target it specifically: */
+  .logo-right .logo {
+    max-width: 180px; /* Keeps the visual weight balanced */
+  }
+}
+
+/* --- Ultra-Wide Screens (Optional) --- */
+@media (min-width: 1920px) {
+  .logo {
+    max-width: 240px; /* Even larger for 4K/Ultra-wide monitors */
+  }
+
+  .logo-row-container {
+    padding: 0 100px;
+  }
+}
+
+/* Target 1366x768 and similar medium-sized desktop screens */
+@media (max-width: 1400px) and (min-width: 1025px) {
+  .container {
+    /* Adjust the value below to push it as low as you need */
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+    /* Smooth transition if the screen is resized */
+    transition: margin-top 0.3s ease, top 0.3s ease;
+  }
+}
+
+/* Section 2 */
+
+/* --- SECTION 2: FACULTY WORD --- */
+
+.section-word {
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  padding-bottom: 180px;
+  position: relative;
+  overflow: hidden;
+}
+
+.word-card-wrapper {
+  max-width: 950px;
+  width: 90%;
+  margin: 0 auto 80px auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* 1. Main Card Layout (Desktop) */
+.word-card-layout {
+  display: flex;
+  flex-direction: row;
+  background-color: #f8f7ff;
+  position: relative;
+  z-index: 3;
+
+  /* Desktop SVG Mask */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 520' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L925,0 a 25,25 0 0 1 25,25 L950,495 a 25,25 0 0 1 -25,25 L210,520 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,470 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 520' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L925,0 a 25,25 0 0 1 25,25 L950,495 a 25,25 0 0 1 -25,25 L210,520 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,470 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.word-photo-container {
+  flex: 1;
+  min-height: 450px;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.faculty-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.word-text-box {
+  flex: 1.2;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.word-title {
+  font-weight: 500;
+  font-size: 32px;
+  color: #0a0b2e;
+  margin-bottom: 20px;
+}
+
+.word-body-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #0a0b2e;
+}
+
+/* --- Decor --- */
+.decor-chevron-inverted {
+  position: absolute;
+  bottom: -180px;
+  right: -180px;
+  width: 350px;
+  height: 350px;
+  border: 12px solid rgba(197, 41, 187, 1);
+  border-radius: 30px;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+/* --- MOBILE VIEW --- */
+@media (max-width: 768px) {
+  .section-word {
+    padding-bottom: 60px;
+  }
+
+  .word-card-layout {
+    flex-direction: column;
+    /* We disable the desktop SVG mask to prevent it stretching weirdly */
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-radius: 25px;
+    background-color: #f8f7ff;
+    overflow: visible; /* Allows the photo mask to show through clearly */
+  }
+
+  .word-photo-container {
+    min-height: 300px;
+    width: 100%;
+
+    /* THE FIX: Apply the cutout bite specifically to the photo container */
+    -webkit-mask-image: radial-gradient(
+      circle at 100% 0%,
+      transparent 40px,
+      black 41px
+    );
+    mask-image: radial-gradient(
+      circle at 100% 0%,
+      transparent 40px,
+      black 41px
+    );
+
+    /* Round the top-left corner to match the card rounding */
+    border-top-left-radius: 25px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .faculty-photo {
+    border-top-left-radius: 25px; /* Double-ensures the rounding */
+    /* test */
+
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 520' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L925,0 a 25,25 0 0 1 25,25 L950,495 a 25,25 0 0 1 -25,25 L210,520 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,470 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 520' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L925,0 a 25,25 0 0 1 25,25 L950,495 a 25,25 0 0 1 -25,25 L210,520 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,470 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .word-text-box {
+    padding: 40px 25px;
+  }
+
+  .word-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .decor-chevron-inverted {
+    display: none;
+  }
+}
+
+/* WiP */
+
+@media (max-width: 768px) {
+  .word-card-layout {
+    flex-direction: column; /* Photo stays on top of text */
+    background-color: #f8f7ff;
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .word-photo-container {
+    min-height: 320px;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Ensures the notched image sits ON TOP of the text box */
+
+    /* THE NOTCH: This SVG creates the 'step-up' at the bottom-left of the photo */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L400,0 L400,320 L210,320 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,270 a 25,25 0 0 1 -25,-25 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L400,0 L400,320 L210,320 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,270 a 25,25 0 0 1 -25,-25 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+  }
+
+  .faculty-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .word-text-box {
+    /* 1. Pull the text box UP by the height of the notch (approx 50px) */
+    margin-top: -50px;
+
+    /* 2. Add extra TOP padding so the text starts BELOW the notch area */
+    padding: 70px 25px 40px 25px;
+
+    background-color: #f8f7ff;
+    position: relative;
+    z-index: 1; /* Sits behind the photo container's cutout */
+  }
+
+  .word-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+}
+
+/* --- MOBILE VIEW (768px) --- */
+@media (max-width: 768px) {
+  .section-word {
+    padding-bottom: 80px;
+    overflow: hidden; /* Crucial to clip the decor square */
+  }
+
+  .word-card-layout {
+    flex-direction: column;
+    background-color: #f8f7ff;
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  /* The Photo 'Bite' Logic */
+  .word-photo-container {
+    min-height: 320px;
+    position: relative;
+    z-index: 2;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L400,0 L400,320 L210,320 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,270 a 25,25 0 0 1 -25,-25 L0,250 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L400,0 L400,320 L210,320 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,270 a 25,25 0 0 1 -25,-25 L0,250 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+  }
+
+  .word-text-box {
+    margin-top: -50px;
+    padding: 75px 25px 40px 25px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* --- MOBILE DECOR (Section 2) --- */
+  .decor-chevron-inverted {
+    display: block; /* Ensure it overrides the previous 'none' */
+    width: 180px; /* Scaled down for mobile */
+    height: 180px;
+    border-width: 10px;
+
+    /* Mirroring Desktop Position (Bottom-Right) */
+    bottom: -60px;
+    right: -60px;
+    transform: rotate(45deg);
+
+    /* Lower z-index so it sits behind the card content */
+    z-index: 0;
+  }
+}
+
+/* Section 4 */
+
+/* Ensure the section container clips these large squares */
+.section-cta {
+  background-color: #ffffff;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-content-container {
+  /* Match the 950px column established in Section 2 and 3 */
+  max-width: 950px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers all content */
+}
+
+/* --- The CTA Card Wrapper --- */
+.cta-card-wrapper {
+  width: 100%;
+  max-width: 950px;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 80px;
+}
+
+.cta-card-layout {
+  font-family: "Inter", sans-serif;
+  background-color: #140f4b;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  /* 1. Standard rounding for the top three corners */
+  border-radius: 25px 25px 0 25px;
+
+  /* 2. The Mask: We use the Section 1 SVG but tell it NOT to stretch the notch */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 520' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L925,0 a 25,25 0 0 1 25,25 L950,495 a 25,25 0 0 1 -25,25 L210,520 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,470 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 950 520' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L925,0 a 25,25 0 0 1 25,25 L950,495 a 25,25 0 0 1 -25,25 L210,520 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,470 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+
+  /* 3. This is the magic: Force the height of the MASK to be 520px 
+     even if the DIV is shorter. This keeps the curves identical to Section 1. */
+  -webkit-mask-size: 100% 520px;
+  mask-size: 100% 520px;
+
+  /* 4. Align the mask to the bottom so the notch is always visible */
+  -webkit-mask-position: bottom;
+  mask-position: bottom;
+  mask-repeat: no-repeat;
+}
+
+.cta-headline {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+/* --- CTA Button (Orange #ff7a00) --- */
+.cta-button {
+  display: inline-block;
+  padding: 16px 36px;
+  background-color: #ff7a00;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  transition: all 0.2s ease-in-out;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+}
+
+/* --- Partner Area --- */
+.partner-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+}
+
+.partner-label {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 20px; /* Space before logo */
+}
+
+.partner-logo {
+  max-width: 150px; /* Adjust based on logo file dimensions */
+  height: auto;
+  opacity: 0.9; /* Subtle fade-in */
+}
+
+/* --- Background Borders (#C529BB) --- */
+.decor-line-4 {
+  position: absolute;
+  pointer-events: none;
+  /* Matching Section 2: 15px border with 20% opacity of #C529BB */
+  border: 12px solid rgba(197, 41, 187, 1);
+  border-radius: 30px; /* Same soft corners as Section 2 */
+  width: 250px;
+  height: 250px;
+  z-index: 1;
+  /* Matching Section 2's architectural tilt */
+  transform: rotate(45deg);
+}
+
+/* Position Bottom-Left square */
+.decor-left-cta-4 {
+  bottom: 200px;
+  left: -200px;
+}
+
+/* Position Bottom-Right square */
+.decor-right-cta-4 {
+  bottom: -175px;
+  right: -100px;
+  /* Slight variation in rotation if you want a dynamic look, 
+     otherwise keep at 15deg for perfect symmetry */
+  transform: rotate(-45deg);
+}
+
+/* --- MOBILE VIEW (768px) --- */
+@media (max-width: 768px) {
+  .section-cta {
+    padding: 0;
+    /* Extra overflow insurance for the decor squares */
+    overflow: hidden;
+  }
+
+  .cta-card-layout {
+    padding: 60px 20px 100px 20px;
+    background-color: #140f4b;
+
+    /* Exact Matching Mask (Rounded + Bottom-Left Notch) */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L375,0 a 25,25 0 0 1 25,25 L400,375 a 25,25 0 0 1 -25,25 L210,400 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,350 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' preserveAspectRatio='none'%3E%3Cpath d='M25,0 L375,0 a 25,25 0 0 1 25,25 L400,375 a 25,25 0 0 1 -25,25 L210,400 a 25,25 0 0 1 -25,-25 a 25,25 0 0 0 -25,-25 L25,350 a 25,25 0 0 1 -25,-25 L0,25 a 25,25 0 0 1 25,-25 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    border-radius: 0;
+  }
+
+  .decor-left-cta-4 {
+    /* Maintain bottom-left alignment */
+    bottom: 120px;
+    left: -220px;
+    transform: rotate(45deg);
+    top: auto; /* Reset any previous overrides */
+    border-width: 10px;
+  }
+
+  .decor-right-cta-4 {
+    /* Maintain bottom-right alignment */
+    bottom: -220px;
+    right: -100px;
+    transform: rotate(-45deg);
+    border-width: 10px;
+  }
+
+  .cta-headline {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .partner-area {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 6; /* Ensures partner logo stays above the decors */
+  }
+}
+
+/* Section 5 (Footer) */
+
+.main-footer {
+  font-family: "Inter", sans-serif; /* Applied to the whole footer */
+  background-color: #140f4b;
+  color: #ffffff;
+  padding: 80px 0 40px 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Clips the square so it doesn't cause scrolling */
+}
+
+/* --- The White Square Decor (Section 4 Style) --- */
+.main-footer::before {
+  content: "";
+  position: absolute;
+
+  /* Positioning: Bleeding off the bottom-left */
+  bottom: -170px;
+  left: 0px;
+
+  /* Dimensions */
+  width: 250px;
+  height: 250px;
+
+  /* Match Section 4 style: Full square border */
+  /* We use 40px to match the thickness seen in the footer image */
+  border: 12px solid #ffffff;
+
+  /* Matches the soft corners of your other decors */
+  border-radius: 30px;
+
+  /* The signature 15-degree tilt used in the other sections */
+  transform: rotate(45deg);
+
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1; /* Keeping it full white as per the footer image */
+}
+
+.footer-content-container {
+  position: relative;
+  z-index: 2; /* Ensures content sits on top of the decor */
+  max-width: 950px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+}
+
+.footer-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+.brand-description {
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0; /* Removes default indentation */
+  margin: 0; /* Removes default browser margins */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns the items to the left edge */
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* This ensures the icon itself is the very first thing on the left */
+.contact-item::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px; /* Space between icon and text only */
+  background-repeat: no-repeat;
+  background-size: contain;
+  flex-shrink: 0; /* Prevents icon from squishing */
+}
+
+/* Icon SVGs (Keeping your previous definitions) */
+.contact-item.phone::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.72 11.72 0 003.7.59 1 1 0 011 1v3.94a1 1 0 01-1.06 1A19.93 19.93 0 013 4.06a1 1 0 011-1.06h3.94a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.27 1.11l-2.2 2.2z'/%3E%3C/svg%3E");
+}
+
+.contact-item.email::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+}
+
+.contact-item a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-item a:hover {
+  opacity: 0.8; /* Subtle feedback on hover */
+}
+
+/* --- Social Icons --- */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity 0.2s;
+}
+
+.social-icon:hover {
+  opacity: 0.7;
+}
+
+/* LinkedIn SVG */
+.social-icon.linkedin {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z'/%3E%3C/svg%3E");
+}
+
+/* Instagram SVG */
+.social-icon.instagram {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8c0 2 1.6 3.6 3.6 3.6h8.8c2 0 3.6-1.6 3.6-3.6V7.6C20 5.6 18.4 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 011.25 1.25A1.25 1.25 0 0117.25 8 1.25 1.25 0 0116 6.75a1.25 1.25 0 011.25-1.25M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z'/%3E%3C/svg%3E");
+}
+
+/* Facebook SVG */
+.social-icon.facebook {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M22 12a10 10 0 10-11.56 9.87v-6.98H7.89V12h2.55V9.3c0-2.52 1.5-3.9 3.79-3.9 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.77-1.64 1.56V12h2.8l-.45 2.89h-2.35v6.98A10 10 0 0022 12z'/%3E%3C/svg%3E");
+}
+
+/* --- Bottom Legal Bar: Clean & Centered (No Line) --- */
+.footer-legal-bar {
+  /* Removed border-top: 1px solid rgba(255, 255, 255, 0.1); */
+  padding-top: 20px; /* Reduced padding slightly since there is no line */
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  text-align: center;
+}
+
+.legal-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.copyright,
+.legal-links a {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.legal-links a:hover {
+  color: #ffffff;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .footer-legal-bar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+.footer-website-link {
+  font-size: 1rem;
+  color: #ffffff; /* Explicitly set to white */
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-website-link:hover {
+  opacity: 0.8; /* Subtle feedback on hover */
+}
+
+/* --- Responsive Footer (Mobile) --- */
+@media (max-width: 768px) {
+  /* 1. Hide the white square decor */
+  .main-footer::before {
+    display: none;
+  }
+
+  .main-footer {
+    padding: 60px 0 40px 0;
+    text-align: left; /* Center align text for mobile balance */
+  }
+
+  /* 2. Stack the 3 columns vertically */
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  /* 3. Ensure columns and brand area stay left */
+  .footer-column {
+    align-items: flex-start;
+  }
+
+  /* 3. Center the branding area and description */
+  .footer-brand-area {
+    padding-right: 0;
+    align-items: flex-start;
+  }
+
+  .brand-description {
+    margin: 0 auto; /* Centers the description text block */
+  }
+
+  /* 4. Center the Contact List and Social Icons */
+  .contact-list {
+    align-items: flex-start;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+  }
+
+  /* 5. Stack the Legal Bar items */
+  .footer-legal-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .legal-links {
+    flex-direction: row; /* Stack Terms, Privacy, Cookie links */
+    gap: 10px;
+  }
+}
+
+.footer-logo-img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
